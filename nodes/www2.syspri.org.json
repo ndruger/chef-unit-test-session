@@ -4,9 +4,9 @@
 		"default_ruby" : "ruby-1.9.3-p429"
 	},
 	"run_list":[
-		"recipe[java]",
-		"recipe[jenkins]",
-		"recipe[disabled_iptables]"
+		"hello",
+		"recipe[yum::epel]",
+		"recipe[rvm::system]"
 	]
 }
 
