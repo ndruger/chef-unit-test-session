@@ -3,8 +3,8 @@
 
 Vagrant.configure("2") do |config|
   config.vm.define :local do |local|
-	local.vm.box = "centos"
-	local.vm.network :private_network, ip: "192.168.50.12"
+    local.vm.box = "centos"
+    local.vm.network :private_network, ip: "192.168.50.12"
   end
 
   config.vm.define :remote do |remote|
@@ -12,6 +12,7 @@ Vagrant.configure("2") do |config|
     remote.vm.provider :aws do |aws, override|
       aws.access_key_id     = ENV['AWS_ACCESS_KEY_ID']
       aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+      p aws.access_key_id, aws.secret_access_key
       aws.keypair_name = "aws_test"
       aws.instance_type = "t1.micro"
       aws.region = "ap-northeast-1"
@@ -23,11 +24,11 @@ Vagrant.configure("2") do |config|
       override.ssh.username = "ec2-user"
       override.ssh.private_key_path = "~/.ssh/aws_test.pem"
 
-	  # https://github.com/mitchellh/vagrant-aws/pull/26
-	  aws.user_data = <<-USER_DATA
+      # https://github.com/mitchellh/vagrant-aws/pull/26
+      aws.user_data = <<-USER_DATA
 #!/bin/sh
 sed -i -e 's/^\\(Defaults.*requiretty\\)/#\\1/' /etc/sudoers
-	  USER_DATA
+      USER_DATA
     end
   end
 end
