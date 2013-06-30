@@ -2,7 +2,7 @@ site :opscode
 cookbook 'yum'
 cookbook 'rvm', github: 'fnichol/chef-rvm'
 cookbook 'java'
-cookbook 'jenkins', github: 'fnichol/chef-jenkins'
-#cookbook 'nginx'
-
+cookbook 'nodejs', github: 'mdxp/nodejs-cookbook'
+cookbook 'phantomjs'
+cookbook 'nginx'
 
