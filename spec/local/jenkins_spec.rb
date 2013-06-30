@@ -9,7 +9,12 @@ describe service('jenkins') do
   it { should be_running   }
 end
 
-describe port(8080) do
-  it { should be_listening }
+[8080, 8081].each do |i|
+  describe port(i) do
+    it { should be_listening }
+  end
 end
 
+describe file('/etc/sysconfig/jenkins') do
+  it { should be_file }
+end
