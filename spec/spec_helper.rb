@@ -20,6 +20,10 @@ RSpec.configure do |c|
       file = block.source_location.first
     end
     host  = File.basename(Pathname.new(file).dirname)
+    
+#    host = ENV['TARGET_HOST'].presence || host
+    host = (u = ENV['TARGET_HOST']).nil? ? host: u;
+    
     if c.host != host
       c.ssh.close if c.ssh
       c.host  = host
