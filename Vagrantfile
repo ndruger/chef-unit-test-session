@@ -12,7 +12,6 @@ Vagrant.configure("2") do |config|
     remote.vm.provider :aws do |aws, override|
       aws.access_key_id     = ENV['AWS_ACCESS_KEY_ID']
       aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
-      p aws.access_key_id, aws.secret_access_key
       aws.keypair_name = "aws_test"
       aws.instance_type = "t1.micro"
       aws.region = "ap-northeast-1"
