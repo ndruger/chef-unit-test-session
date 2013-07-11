@@ -7,7 +7,7 @@ run_list(
   "recipe[rvm::system]",
   "recipe[java]",
   "recipe[nodejs]",
-  "recipe[phantomjs]",
+  "recipe[phantomjs::default]",
   "recipe[nginx]",
   "recipe[jenkins]",
   "recipe[base-iptables]",

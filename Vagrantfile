@@ -5,6 +5,16 @@ Vagrant.configure("2") do |config|
   config.vm.define :local do |local|
     local.vm.box = "centos"
     local.vm.network :private_network, ip: "192.168.50.12"
+    local.vm.provision :chef_solo do |chef|
+      chef.json = {
+        "rvm" => {
+          "vagrant" => {
+            "system_chef_client" => "/opt/chef/bin/chef-client",
+            "system_solo_client" => "/opt/chef/bin/chef-solo"
+          }
+        }
+      }
+    end
   end
 
   config.vm.define :remote do |remote|
